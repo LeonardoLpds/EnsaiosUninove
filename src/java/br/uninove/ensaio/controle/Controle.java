@@ -1,8 +1,10 @@
 package br.uninove.ensaio.controle;
 
+import br.uninove.ensaio.Ensaio;
 import br.uninove.ensaio.EnsaioService;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -32,13 +34,13 @@ public class Controle extends HttpServlet {
         EnsaioService servico = new EnsaioService();
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         String acao = request.getParameter("acao");
-        if(acao == null){
+        if (acao == null) {
             acao = "default";
         }
-        if(acao.equals("")){
+        if (acao.equals("")) {
             acao = "default";
         }
-        
+
         String msg = request.getParameter("msg");
         String id = request.getParameter("id");
         int idN;
@@ -46,17 +48,79 @@ public class Controle extends HttpServlet {
         String data = request.getParameter("data");
         Date dataD;
         String valor = request.getParameter("valor");
-        if(valor == null){
+        if (valor == null) {
             valor = "-1";
         }
-        if(valor.equals("")){
+        if (valor.equals("")) {
             valor = "-1";
         }
         BigDecimal valorBD;
-        
-        switch(acao){
+
+        switch (acao) {
             case "formIncluir":
+                rd = request.getRequestDispatcher("insere.jsp");
+                break;
+            case "formaAlterar":
+                idN = Integer.parseInt(id);
+                Ensaio ensaio = servico.selecionarPorId(idN);
+                msg = servico.getMsg();
+                if (msg.equals("Sucesso")) {
+                    rd = request.getRequestDispatcher("alterar.jsp");
+                    request.setAttribute("ensaio", ensaio);
+                } else {
+                    rd = request.getRequestDispatcher("mensagem.jsp");
+                    request.setAttribute("msg", msg);
+                }
+                break;
+            case "alterar":
+                idN = Integer.parseInt(id);
+                try {
+                    dataD = formato.parse(data);
+                } catch (ParseException ex) {
+                    dataD = new Date();
+                }
+                valorBD = BigDecimal.valueOf(Double.parseDouble(valor));
+                servico.alterar(idN, nome, dataD, valorBD);
+                msg = servico.getMsg();
+                if(!msg.equals("Sucesso")){
+                    rd = request.getRequestDispatcher("mensagem.jsp");
+                    request.setAttribute("msg", msg);
+                }
+                break;
+            case "inserir":
+                try {
+                    dataD = formato.parse(data);
+                } catch (ParseException ex) {
+                    dataD = new Date();
+                }
+                valorBD = BigDecimal.valueOf(Double.parseDouble(valor));
+                servico.inserir(nome, dataD, valorBD);
+                msg = servico.getMsg();
+                if(!msg.equals("Sucesso")){
+                    rd = request.getRequestDispatcher("mensagem.jsp");
+                    request.setAttribute("msg", msg);
+                }
+                break;
+                
+            case "excluir":
+                idN = Integer.parseInt(id);
+                servico.apagar(idN);
+                msg = servico.getMsg();
+                if(!msg.equals("Sucesso")){
+                    rd = request.getRequestDispatcher("mensagem.jsp");
+                    request.setAttribute("msg", msg);
+                }
+                break;
+                
+            case "exibirErro":
+                rd = request.getRequestDispatcher("mensagem.jsp");
+                request.setAttribute("msg", msg);
+                break;
+            case "default":
+            default:
+                break;
         }
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
