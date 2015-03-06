@@ -9,6 +9,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ensaios</title>
+        <style type="text/css">
+            table{border-collapse: collapse;}
+            th{background-color: green; color: whitesmoke;}
+            th, td{padding: 10px;}
+            table, th, td{border: 2px solid black}
+            a{font-weight: bold; color: green;}
+            a:link, a:visited{text-decoration: none;}
+            a:hover, a:active{text-decoration: underline;}
+            
+        </style>
     </head>
     <body>
         <%
@@ -21,10 +31,11 @@
                 response.sendRedirect(String.format("controle?acao=exibirErro&msg=%s", msg));
             }
         %>
+        <h1>listagem</h1>
         <table>
             <thead>
                 <tr>
-                    <td>Nome</td><td>Data</td><td>Valor</td><td>Ação</td>
+                    <th>Nome</th><th>Data</th><th>Valor</th><th>Ações</th>
                 </tr>
             </thead>
             <tbody>
