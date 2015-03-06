@@ -1,0 +1,16 @@
+SMAP
+altera_jsp.java
+JSP
+*S JSP
+*F
++ 0 altera.jsp
+altera.jsp
+*L
+1,13:48
+14,4:62
+17,4:66
+21,2:70,3
+23:76,5
+24:81,3
+25,5:84
+*E

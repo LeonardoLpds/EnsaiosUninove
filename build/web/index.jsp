@@ -49,7 +49,7 @@
                     <td><%= formatoNumero.format(ensaio.getValor())%></td>
                     <td>
                         <a href="controle?acao=excluir&id=<%= ensaio.getId()%>">Excluir</a>&nbsp;
-                        <a href="controle?acao=excluir&id=<%= ensaio.getId()%>">Alterar</a>
+                        <a href="controle?acao=alterar&id=<%= ensaio.getId()%>">Alterar</a>
                     </td>
                 </tr>
                 <%
