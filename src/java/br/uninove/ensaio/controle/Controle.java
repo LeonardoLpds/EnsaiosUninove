@@ -60,7 +60,7 @@ public class Controle extends HttpServlet {
             case "formIncluir":
                 rd = request.getRequestDispatcher("insere.jsp");
                 break;
-            case "formaAlterar":
+            case "formAlterar":
                 idN = Integer.parseInt(id);
                 Ensaio ensaio = servico.selecionarPorId(idN);
                 msg = servico.getMsg();
