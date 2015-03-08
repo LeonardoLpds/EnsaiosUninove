@@ -17,7 +17,7 @@
             a{font-weight: bold; color: green;}
             a:link, a:visited{text-decoration: none;}
             a:hover, a:active{text-decoration: underline;}
-            
+
         </style>
     </head>
     <body>
@@ -58,5 +58,6 @@
                 %>
             </tbody>
         </table>
+        <p><a href="controle?acao=formIncluir">Incluir</a></p>
     </body>
 </html>
