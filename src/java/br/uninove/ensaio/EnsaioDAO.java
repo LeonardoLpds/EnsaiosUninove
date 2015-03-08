@@ -73,7 +73,7 @@ public class EnsaioDAO {
         Conexao conexao = new Conexao();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String sql = String.format(
-            "Update App.Ensaio  set nome = '%s', dtEnsaio = '%s', valor = %d where id = %d",
+            "Update App.Ensaio set nome = '%s', dtEnsaio = '%s', valor = %d where id = %d",
             ensaio.getNome(),
             formato.format(ensaio.getDtEnsaio()),
             ensaio.getValor().intValue(),

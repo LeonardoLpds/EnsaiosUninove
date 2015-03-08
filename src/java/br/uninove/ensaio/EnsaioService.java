@@ -35,7 +35,7 @@ public class EnsaioService {
     
     public void inserir(String nome, Date dtEnsaio, BigDecimal valor){
         dao = new EnsaioDAO();
-        if(nome != null){
+        if(nome == null){
             nome = "";
         }
         if(!nome.equals("")){
@@ -71,7 +71,7 @@ public class EnsaioService {
     }
     public void alterar(int id, String nome, Date dtEnsaio, BigDecimal valor){
         dao = new EnsaioDAO();
-        if(nome != null){
+        if(nome == null){
             nome = "";
         }
         if(!nome.equals("")){
