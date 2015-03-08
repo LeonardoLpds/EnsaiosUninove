@@ -12,4 +12,4 @@ Para verificar tudo que foi feito basta importar todo o projeto para o netbeans!
 No [site do professor CID](goo.gl/Vyk5km) podemos encontrar o passo-a-passo para criação desse pequeno projeto neste [link](http://migre.me/oUaUA)
 
 ###Fork-me
-Apenas [fork](https://github.com/LeonardoLpds/EnsaiosUninove/fork) esse projeto e faça suas alterações (Ainda não está funcionando corretamente =P)
+Apenas [fork](https://github.com/LeonardoLpds/EnsaiosUninove/fork) esse projeto e faça suas alterações!
